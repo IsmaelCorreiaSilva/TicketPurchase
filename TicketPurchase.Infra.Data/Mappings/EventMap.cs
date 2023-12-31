@@ -13,6 +13,8 @@ namespace TicketPurchase.Infra.Data.Mappings
             builder.HasKey(e => e.Id);
             builder.Property(e => e.Title).HasMaxLength(100).IsRequired();
             builder.Property(e => e.Description).HasMaxLength(1000).IsRequired();
+            builder.Property(e => e.NumberVacancies).IsRequired();
+            builder.Property(e => e.Duration).HasMaxLength(50).IsRequired();
             builder.Property(e => e.Date).IsRequired();
             builder.Property(e => e.CreateAt).IsRequired();
         }

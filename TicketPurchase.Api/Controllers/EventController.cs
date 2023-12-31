@@ -21,26 +21,45 @@ namespace TicketPurchase.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public string Get(Guid id)
+        public async Task<ActionResult> Get(Guid id)
         {
-            return "value";
+            var searchedEvent = await eventService.GetByIdAsync(id);
+
+            if(searchedEvent == null)
+               return NotFound();
+
+            return Ok(searchedEvent);
         }
 
         [HttpPost]
         public async Task<ActionResult> Post(EventCreateModel newEvent)
         {
-            await eventService.InsertAsync(newEvent);
-            return Ok();
+            var eventCreated = await eventService.InsertAsync(newEvent);
+            return CreatedAtAction(nameof(Get), new { id = eventCreated.Id }, eventCreated);
         }
 
-        [HttpPut("{id}")]
-        public void Put(EventUpdateModel updateEvent)
+        [HttpPut]
+        public async Task<ActionResult> Put(EventUpdateModel updateEvent)
         {
+            var resultEvent = await eventService.UpdateAsync(updateEvent);
+            
+            if (resultEvent == null)
+                return NotFound();
+
+            return Ok(resultEvent);
         }
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult> Delete(Guid id)
         {
+            var searchedEvent = await eventService.GetByIdAsync(id);
+
+            if(searchedEvent == null)
+                return NotFound();
+
+            await eventService.DeleteAsync(id);
+
+            return NoContent();
         }
     }
 }

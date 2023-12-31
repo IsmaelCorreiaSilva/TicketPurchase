@@ -9,6 +9,7 @@ builder.Services.AddDependencyInjectionConfiguration();
 builder.Services.AddDatabaseConfiguration(builder.Configuration);
 builder.Services.AddControllers();
 
+builder.Services.AddAutoMapperConfiguration();
 builder.Services.AddFluentValidationConfiguration();
 builder.Services.AddFluentValidationAutoValidation();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
