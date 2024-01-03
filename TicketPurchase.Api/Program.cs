@@ -1,4 +1,5 @@
 using FluentValidation.AspNetCore;
+using System.Reflection;
 using TicketPurchase.Infra.Data.IoC.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,7 +15,14 @@ builder.Services.AddFluentValidationConfiguration();
 builder.Services.AddFluentValidationAutoValidation();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(op =>
+{
+
+
+    var xmlFileName = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFileName);
+    op.IncludeXmlComments(xmlPath);
+});
 
 var app = builder.Build();
 
