@@ -1,15 +1,15 @@
 using FluentValidation.AspNetCore;
 using System.Reflection;
+using TicketPurchase.Api.Middleware;
 using TicketPurchase.Infra.Data.IoC.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddTransient<GlobalExceptionHandlingMiddleware>();
 builder.Services.AddDependencyInjectionConfiguration();
 builder.Services.AddDatabaseConfiguration(builder.Configuration);
 builder.Services.AddControllers();
-
 builder.Services.AddAutoMapperConfiguration();
 builder.Services.AddFluentValidationConfiguration();
 builder.Services.AddFluentValidationAutoValidation();
@@ -39,6 +39,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseMiddleware<GlobalExceptionHandlingMiddleware>();
 
 app.MapControllers();
 
