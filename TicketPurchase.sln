@@ -17,11 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketPurchase.Core", "Tick
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra.Data", "Infra.Data", "{81432FA5-AB25-4276-A046-76CBA143995B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketPurchase.Infra.Data", "TicketPurchase.Infra.Data\TicketPurchase.Infra.Data.csproj", "{1EC9D611-793A-4E02-BABF-8F5933CDCFF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketPurchase.Infra.Data", "TicketPurchase.Infra.Data\TicketPurchase.Infra.Data.csproj", "{1EC9D611-793A-4E02-BABF-8F5933CDCFF4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra,Data,IoC", "Infra,Data,IoC", "{B58CA175-A6B5-4F1A-A31D-25F561ECE332}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra.Data.IoC", "Infra.Data.IoC", "{B58CA175-A6B5-4F1A-A31D-25F561ECE332}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketPurchase.Infra.Data.IoC", "TicketPurchase.Infra.Data.IoC\TicketPurchase.Infra.Data.IoC.csproj", "{EE9C54F2-CF50-449B-AE54-FB8CBA6AD723}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketPurchase.Infra.Data.IoC", "TicketPurchase.Infra.Data.IoC\TicketPurchase.Infra.Data.IoC.csproj", "{EE9C54F2-CF50-449B-AE54-FB8CBA6AD723}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

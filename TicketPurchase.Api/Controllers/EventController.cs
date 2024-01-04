@@ -27,7 +27,7 @@ namespace TicketPurchase.Api.Controllers
         /// <summary>
         /// Retorna o Evento buscado por Id
         /// </summary>
-        /// <param name="id" exemplo="08dc0a0b-353c-456f-8372-03c7e6326add">Id do Evento</param>
+        /// <param name="id">Id do Evento</param>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(EventViewModel),StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
@@ -73,7 +73,7 @@ namespace TicketPurchase.Api.Controllers
         /// <summary>
         /// Excluir um Evento cadastrado
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Id do Evento</param>
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(EventViewModel), StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]

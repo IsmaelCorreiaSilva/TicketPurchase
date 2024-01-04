@@ -22,6 +22,9 @@ builder.Services.AddSwaggerGen(op =>
     var xmlFileName = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFileName);
     op.IncludeXmlComments(xmlPath);
+    xmlPath = Path.Combine(AppContext.BaseDirectory, "TicketPurchase.Application.xml");
+    op.IncludeXmlComments(xmlPath);
+
 });
 
 var app = builder.Build();
