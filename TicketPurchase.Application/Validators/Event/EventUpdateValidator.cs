@@ -4,13 +4,13 @@ using TicketPurchase.Application.Models.Event;
 
 namespace TicketPurchase.Application.Validators.Event
 {
-    public class EventCreateValidator : AbstractValidator<EventCreateModel>
+    public class EventUpdateValidator:AbstractValidator<EventUpdateModel>
     {
-        public EventCreateValidator()
+        public EventUpdateValidator()
         {
             RuleFor(c => c.Title)
                 .NotEmpty()
-                .Length(5,100);
+                .Length(5, 100);
 
             RuleFor(c => c.Description)
                 .NotEmpty()

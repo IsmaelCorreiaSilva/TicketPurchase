@@ -1,10 +1,16 @@
 using FluentValidation.AspNetCore;
+using Serilog;
 using System.Reflection;
 using TicketPurchase.Api.Middleware;
 using TicketPurchase.Infra.Data.IoC.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var connectionLog = builder.Configuration.GetConnectionString("connectionlog");
+
+var log = new LoggerConfiguration()
+            .WriteTo.MongoDBBson(connectionLog, "logs", Serilog.Events.LogEventLevel.Warning)
+            .CreateLogger();
 // Add services to the container.
 builder.Services.AddTransient<GlobalExceptionHandlingMiddleware>();
 builder.Services.AddDependencyInjectionConfiguration();
@@ -15,10 +21,8 @@ builder.Services.AddFluentValidationConfiguration();
 builder.Services.AddFluentValidationAutoValidation();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(op =>
+builder.Services.AddSwaggerGen(op => 
 {
-
-
     var xmlFileName = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFileName);
     op.IncludeXmlComments(xmlPath);
